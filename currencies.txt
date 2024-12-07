@@ -1,0 +1,4 @@
+NJD|New Jiao Dollar|新角州元|1.00|新角州的主要流通货币。
+HST|Hestite Coin|赫西特币|6.67|流行于赫西特语地区的常用货币。
+ARC|Aranka Krona|阿兰卡克朗|3.33|阿兰卡地区使用的货币。
+WTL|Waterland Tal|水洲塔尔|0.40|水洲国家使用的法定货币。
