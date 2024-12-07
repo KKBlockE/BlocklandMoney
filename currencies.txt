@@ -1,4 +1,14 @@
-NJD|New Jiao Dollar|新角州元|1.00|新角州的主要流通货币。
-HST|Hestite Coin|赫西特币|6.67|流行于赫西特语地区的常用货币。
-ARC|Aranka Krona|阿兰卡克朗|3.33|阿兰卡地区使用的货币。
-WTL|Waterland Tal|水洲塔尔|0.40|水洲国家使用的法定货币。
+WMM|World Mito Mal|世界币|1.00|纳布特瑞地区的主要货币。
+TAM|Torain M.|同连币|35.0941|纳布特瑞南部群岛等国货币。
+MTM|Maitto M.|迈拓币|2.5512|克提尔，塞维风地区小国货币。
+TLM|Taillank M.|泰兰克币|3.8341|台姆兰，冈什也台姆兰地区货币。
+WLY|Windyland Yuan|风岚元|5.6982|风岚货币。
+HDY|Hadei|哈德|0.3385|摩尔里等水洲西北部内陆地区货币。
+MDR|Modyrod|莫德卢德|951.2255|主要用于尼西亚与瓦尔尼卡。
+HDK|Heidorkuri|惠东克里|18.5533|主要用于水洲南部，（桑索克雷，金斯托等）
+VTB|Vyatka Brown|维亚特卡布朗|7.5145|维亚特卡地区广泛使用的货币。
+SBA|Sabi Ansate|萨币(安萨提币)|2.6812|安萨提地区的主要货币
+VRA|Vonria|翁利安|0.1152|西奈斯夫地区货币。
+CSO|Crystal Omy|克里斯塔尔元|0.8512|克里斯塔尔地区的标准货币。
+WRY|Werbor|维尔元|2.1418|维尔布地区货币。
+MSC|Musichhka|姆斯查|9.7731|瑞德桑德斯东地区货币。
