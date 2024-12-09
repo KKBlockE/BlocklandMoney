@@ -15,14 +15,14 @@ MSC|Musichhka|姆斯查|9.77310000000|瑞德桑德斯东地区货币
 SLD|Selian Dor.|赛利货币|11.52410000000|塞利河流域货币
 PMT|Pièce de monnaie trèfle d'or|金苜蓿币|1.61940000000|鸢尾共和国地区货币
 RKM|Rakim|马西币|351.64620000000|赫西特地区货币
-QWT|Qawah Tun|卡瓦沌|21.41230000000|卡瓦地区货币
+QWT|Qawah Tun|卡瓦盾|21.41230000000|卡瓦地区货币
 IZY|Ironyzizly Y.|铁意志元|3.57120000000|铁意志地区货币
 SLK|Solivivyako|苏里维亚科|3.88940000000|苏里维地区货币
 BDM|Pandakama|邦德马|4.85120000000|南安卡利州北部地区货币
 CPS|Copasia|库帕斯|7.85120000000|卡拉奈地区货币
 TCO|Techo|特中|8.55120000000|南安卡利州西部地区货币
-#DGE IOAPS|Doge IOAPS|★ 狗币|0.05751000000|IOPAS虚拟货币
-#CAT IOPAS|Cat IOPAS|★ 猫币|0.00998500000|IOPAS虚拟货币
-#ALR IOPAS|Akenrian IOPAS|★ 阿根利恩|0.00841700000|IOPAS虚拟货币
-#FRD WKD|Furid KNEW WKD|★ 弗洛伦德|0.00007512000|万科(Wankid)允许的加密货币
-#SDB WKD|Sadeib KNEW WKD|★ 塞安迪币|0.00000002982|万科(Wankid)允许的加密货币
+DGE.iopas|Doge IOAPS|★ 狗币|0.05751000000|IOPAS虚拟货币:“多哥数字货币科技交易公司”提供的数字虚拟货币。
+CAT.iopas|Cat IOPAS|★ 猫币|0.00998500000|IOPAS虚拟货币:“多哥数字货币科技交易公司”提供的数字虚拟货币。
+#ALR.iopas|Akenrian IOPAS|★ 阿根利恩|0.00841700000|IOPAS虚拟货币:“海德兰德交易”提供的数字虚拟货币。
+#FRD.wank|Furid KNEW WKD|★ 弗洛伦德|0.00007512000|万科(Wankid)允许的加密货币:来自“塔晟数字科技交易公司”
+#SDB.wank|Sadeib KNEW WKD|★ 塞安迪币|0.00000002982|万科(Wankid)允许的加密货币:来自“塔晟数字科技交易公司”
