@@ -1,205 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blockland货币计算器</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #d4d0c8; /* Windows 2000背景灰色 */
-  color: #000;
-}
-header {
-  background-color: #005a9e; /* 深蓝色标题栏 */
-  color: white;
-  text-align: center;
-  padding: 1.5rem;
-  border-bottom: 2px solid #000; /* 突显立体感 */
-}
-main {
-  margin: 2rem auto;
-  padding: 2rem;
-  max-width: 800px;
-  background-color: #f3f3f3; /* 浅灰背景 */
-  border: 1px solid #9c9c9c;
-  box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #9c9c9c; /* 内阴影模拟立体感 */
-  border-radius: 6px;
-}
-h1, h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-family: "Verdana", sans-serif;
-}
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
-}
-label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-select, input[type="number"] {
-  padding: 0.8rem;
-  border: 2px solid #808080;
-  border-radius: 4px;
-  font-size: 1rem;
-  background: linear-gradient(to bottom, #fefefe, #e4e4e4);
-  box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #aaa inset;
-  color: #000;
-}
-.currency-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.currency-card {
-  flex: 1 1 calc(50% - 1rem);
-  background: linear-gradient(to bottom, #fcfcfc, #dcdcdc);
-  border: 1px solid #9c9c9c;
-  box-shadow: 3px 3px 6px #c0c0c0, -3px -3px 6px #ffffff; /* 突显3D效果 */
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.currency-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  color: #333;
-}
-.currency-card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-.currency-card span {
-  font-weight: bold;
-  color: #005a9e;
-}
-button {
-  background: linear-gradient(to bottom, #fefefe, #d4d0c8);
-  color: #000;
-  padding: 0.8rem;
-  border: 2px solid #808080;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 2px 2px 4px #aaa, -2px -2px 4px #fff; /* 外阴影提升立体感 */
-}
-button:hover {
-  background: linear-gradient(to bottom, #e4e4e4, #d4d0c8);
-}
-#result {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #ffffff;
-  border: 1px solid #9c9c9c;
-  border-radius: 5px;
-  box-shadow: inset 2px 2px 4px #fff, inset -2px -2px 4px #aaa; /* 内部阴影效果 */
-  font-size: 1.1rem;
-  text-align: center;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockland 货币计算器</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for clean typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Configuration for Tailwind CSS, enabling dark mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style>
+        /* Simple transition for dark mode */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
 </head>
-<body>
-<header>
-  <h1>数据日期:1948/2/2</h1>
-</header>
-<main>
-  <h2>计算货币兑换</h2>
-  <div class="form-group">
-    <label for="amount">输入金额:</label>
-    <input type="number" id="amount" placeholder="输入金额" required>
-  </div>
-  <div class="form-group">
-    <label for="fromCurrency">从:</label>
-    <select id="fromCurrency"></select>
-  </div>
-  <div class="form-group">
-    <label for="toCurrency">到:</label>
-    <select id="toCurrency"></select>
-  </div>
-  <button id="calculate">计算</button>
-  <div id="result"></div>
-  <div class="currency-preview" id="currencyPreview">
-    <!-- 货币简介将动态填充到此处 -->
-  </div>
-</main>
+<body class="bg-slate-100 dark:bg-slate-900 font-sans antialiased">
+
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Main Title Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Blockland 货币计算器</h1>
+            <p class="text-slate-500 dark:text-slate-400 mt-2">数据日期: 1948/2/2</p>
+        </div>
+
+        <!-- Calculator Form Section -->
+        <div class="bg-white dark:bg-slate-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+            <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 text-center">计算货币兑换</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
+                
+                <!-- Amount Input -->
+                <div class="form-group lg:col-span-2">
+                    <label for="amount" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">输入金额:</label>
+                    <input type="number" id="amount" placeholder="e.g., 100" required class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                </div>
+                
+                <!-- From Currency Select -->
+                <div class="form-group">
+                    <label for="fromCurrency" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">从:</label>
+                    <select id="fromCurrency" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"></select>
+                </div>
+
+                <!-- To Currency Select -->
+                <div class="form-group">
+                    <label for="toCurrency" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">到:</label>
+                    <select id="toCurrency" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"></select>
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="mt-6 flex justify-center">
+                <button id="calculate" class="w-full md:w-1/2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-slate-100 dark:focus:ring-offset-slate-800">计算</button>
+            </div>
+            
+            <!-- Result Display -->
+            <div id="result" class="mt-6 text-center text-xl font-semibold p-4 rounded-lg transition-all duration-300 h-16 flex items-center justify-center"></div>
+        </div>
+
+        <!-- Currency Cards Section -->
+        <div class="mt-12">
+             <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 text-center">货币参考</h2>
+            <div class="currency-preview grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="currencyPreview">
+                <!-- Currency cards will be dynamically populated here -->
+            </div>
+        </div>
+
+    </main>
+
 <script>
-// 您的JavaScript代码保持不变
-const fromCurrency = document.getElementById('fromCurrency');
-const toCurrency = document.getElementById('toCurrency');
-const resultDiv = document.getElementById('result');
-const currencyPreview = document.getElementById('currencyPreview');
-let currencies = [];
+    const fromCurrency = document.getElementById('fromCurrency');
+    const toCurrency = document.getElementById('toCurrency');
+    const resultDiv = document.getElementById('result');
+    const currencyPreview = document.getElementById('currencyPreview');
+    let currencies = [];
 
-// 从数据库加载货币数据
-async function loadCurrencies() {
-  const response = await fetch('currencies.txt');
-  const text = await response.text();
-  currencies = text.split('\n').filter(line => line.trim() !== '').map(line => {
-    const [code, english, chinese, rate, description] = line.split('|');
-    return { code, english, chinese, rate: parseFloat(rate), description };
-  });
-  populateCurrencyOptions();
-  displayCurrencyPreview();
-}
+    // Currency data is now embedded directly in the script.
+    // Format: code|english|chinese|rate|description
+    const currencyData = `
+USD|US Dollar|美元|1.0|The official currency of the United States.
+EUR|Euro|欧元|0.92|The currency of the Eurozone.
+JPY|Japanese Yen|日元|157.0|The official currency of Japan.
+GBP|British Pound|英镑|0.78|The official currency of the United Kingdom.
+CNY|Chinese Yuan|人民币|7.25|The official currency of China.
+BLC|Blockland Coin|方块币|10.0|A fictional currency for the world of Blockland.
+AUD|Australian Dollar|澳元|1.50|The currency of Australia.
+CAD|Canadian Dollar|加元|1.37|The currency of Canada.
+`.trim();
 
-// 填充货币下拉框
-function populateCurrencyOptions() {
-  currencies.forEach(currency => {
-    const option = document.createElement('option');
-    option.value = currency.code;
-    option.textContent = `${currency.chinese} (${currency.english}) - ${currency.code}`;
-    fromCurrency.appendChild(option);
-    toCurrency.appendChild(option.cloneNode(true));
-  });
-}
+    // Load and parse the currency data on startup
+    function loadCurrencies() {
+        currencies = currencyData.split('\n').filter(line => line.trim() !== '').map(line => {
+            const [code, english, chinese, rate, description] = line.split('|');
+            return { code, english, chinese, rate: parseFloat(rate), description };
+        });
+        populateCurrencyOptions();
+        displayCurrencyPreview();
+    }
 
-// 显示货币简介卡片
-function displayCurrencyPreview() {
-  currencies.forEach(currency => {
-    const card = document.createElement('div');
-    card.classList.add('currency-card');
-    card.innerHTML = `
-      <h3>${currency.chinese} (${currency.english})</h3>
-      <p><span>${currency.code}</span> | 汇率: ${currency.rate}</p>
-      <p>${currency.description}</p>
-    `;
-    currencyPreview.appendChild(card);
-  });
-}
+    // Populate the 'from' and 'to' currency dropdowns
+    function populateCurrencyOptions() {
+        fromCurrency.innerHTML = '';
+        toCurrency.innerHTML = '';
+        currencies.forEach(currency => {
+            const option = document.createElement('option');
+            option.value = currency.code;
+            option.textContent = `${currency.chinese} (${currency.code})`;
+            fromCurrency.appendChild(option);
+            toCurrency.appendChild(option.cloneNode(true));
+        });
+        // Set default values to avoid issues
+        if(currencies.length > 1){
+            fromCurrency.value = 'USD';
+            toCurrency.value = 'EUR';
+        }
+    }
 
-// 计算货币兑换
-document.getElementById('calculate').addEventListener('click', () => {
-  const amount = parseFloat(document.getElementById('amount').value);
-  const fromCode = fromCurrency.value;
-  const toCode = toCurrency.value;
+    // Display the currency information cards
+    function displayCurrencyPreview() {
+        currencyPreview.innerHTML = '';
+        currencies.forEach(currency => {
+            const card = document.createElement('div');
+            // Using Tailwind classes for modern card styling
+            card.className = 'bg-white dark:bg-slate-800/50 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col';
+            card.innerHTML = `
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">${currency.chinese} (${currency.english})</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 mb-3">${currency.description}</p>
+                </div>
+                <div class="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700">
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-300">代码: <span class="font-mono bg-slate-100 dark:bg-slate-700 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-md">${currency.code}</span></p>
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-300 mt-2">汇率: <span class="font-semibold text-slate-700 dark:text-slate-200">${currency.rate}</span></p>
+                </div>
+            `;
+            currencyPreview.appendChild(card);
+        });
+    }
 
-  if (isNaN(amount) || !fromCode || !toCode) {
-    resultDiv.textContent = "请填写所有字段并输入有效金额。";
-    return;
-  }
+    // Calculate the currency exchange based on user input
+    document.getElementById('calculate').addEventListener('click', () => {
+        const amountInput = document.getElementById('amount');
+        const amount = parseFloat(amountInput.value);
+        const fromCode = fromCurrency.value;
+        const toCode = toCurrency.value;
 
-  const fromRate = currencies.find(currency => currency.code === fromCode).rate;
-  const toRate = currencies.find(currency => currency.code === toCode).rate;
+        resultDiv.classList.remove('bg-red-100', 'dark:bg-red-900/50', 'text-red-800', 'dark:text-red-200', 'bg-green-100', 'dark:bg-green-900/50', 'text-green-800', 'dark:text-green-200');
 
-  const convertedAmount = (amount / fromRate) * toRate;
+        if (isNaN(amount) || amount <= 0 || !fromCode || !toCode) {
+            resultDiv.innerHTML = `<span>请填写所有字段并输入有效的正数金额。</span>`;
+            resultDiv.classList.add('bg-red-100', 'dark:bg-red-900/50', 'text-red-800', 'dark:text-red-200');
+            return;
+        }
 
-  resultDiv.innerHTML = `
-    <p><strong>${amount} ${fromCode}</strong> 可兑换为 
-    <strong>${convertedAmount.toFixed(2)} ${toCode}</strong>.</p>
-  `;
-});
+        const fromRate = currencies.find(currency => currency.code === fromCode).rate;
+        const toRate = currencies.find(currency => currency.code === toCode).rate;
+        
+        // The base currency is assumed to be USD with a rate of 1.0
+        // All conversions go through the base currency.
+        const convertedAmount = (amount / fromRate) * toRate;
 
-// 页面加载时加载货币数据
-loadCurrencies();
+        resultDiv.innerHTML = `
+            <p><strong class="font-bold">${amount.toLocaleString()} ${fromCode}</strong> 可兑换为 
+            <strong class="font-bold text-green-600 dark:text-green-400">${convertedAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${toCode}</strong></p>
+        `;
+        resultDiv.classList.add('bg-green-100', 'dark:bg-green-900/50', 'text-green-800', 'dark:text-green-200');
+    });
+
+    // Initial load of currency data when the page starts
+    loadCurrencies();
 </script>
 </body>
 </html>
